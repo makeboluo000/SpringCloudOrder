@@ -10,7 +10,7 @@ public class MqReceiver {
 
     @RabbitListener(queues = "myQueue")
     public void process(String message) {
-      log.info("MqReceiver: {}" + message11);
+      log.info("MqReceiver1: {}" + message);
     }
 
 }
