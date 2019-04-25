@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MqReceiver {
 
-    @RabbitListener(queues = "myQueue")
+    @RabbitListener(queues = "myQueue11")
     public void process(String message) {
       log.info("MqReceiver1: {}" + message);
     }
