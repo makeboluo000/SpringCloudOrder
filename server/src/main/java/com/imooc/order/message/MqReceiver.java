@@ -33,7 +33,7 @@ public class MqReceiver {
 
     ))
     public void processComputer(String message) {
-        log.info("MqReceiver1: {}", message);
+        log.info("MqReceiver2: {}", message);
     }
 
 
