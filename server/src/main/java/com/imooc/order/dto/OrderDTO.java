@@ -1,12 +1,6 @@
 package com.imooc.order.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.imooc.order.dataobject.OrderDetail;
-import com.imooc.order.enums.OrderStatusEnum;
-import com.imooc.order.enums.PayStatusEnum;
-import com.imooc.order.util.EnumUtil;
-import com.imooc.order.util.serializer.Date2LongSerializer;
 import lombok.Data;
 
 import java.math.BigDecimal;
