@@ -9,6 +9,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -28,10 +29,12 @@ public class ProductInfoReceiver {
                 new TypeReference<List<ProductInfoOutput>>() {});
         log.info("从队列【{}】接收到消息：{}", "productInfo", productInfoOutputList);
 
-        //存储到redis中
-        for (ProductInfoOutput productInfoOutput : productInfoOutputList) {
-            stringRedisTemplate.opsForValue().set(String.format(PRODUCT_STOCK_TEMPLATE, productInfoOutput.getProductId()),
-                    String.valueOf(productInfoOutput.getProductStock()));
+        if(!CollectionUtils.isEmpty(productInfoOutputList)) {
+            //存储到redis中
+            for (ProductInfoOutput productInfoOutput : productInfoOutputList) {
+                stringRedisTemplate.opsForValue().set(String.format(PRODUCT_STOCK_TEMPLATE, productInfoOutput.getProductId()),
+                        String.valueOf(productInfoOutput.getProductStock()));
+            }
         }
 
     }
