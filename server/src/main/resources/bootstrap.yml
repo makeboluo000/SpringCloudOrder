@@ -6,7 +6,7 @@ spring:
       discovery:
         enabled: true
         service-id: CONFIG
-      profile: test
+      profile: dev
     stream:
       bindings:
         myMsgIn:
@@ -27,6 +27,12 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 3000
+            timeoutInMilliseconds: 1000
+management:
+  server:
+    servlet:
+      context-path: /
 
-
+feign:
+  hystrix:
+    enabled: true
