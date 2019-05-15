@@ -6,7 +6,7 @@ spring:
       discovery:
         enabled: true
         service-id: CONFIG
-      profile: dev
+      profile: test
     stream:
       bindings:
         myMsgIn:
@@ -16,3 +16,17 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8671/eureka/
+hystrix:
+  commond:
+    default: #配置全局的
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+    getProductInfoList: #只针对某个方法的配置
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+
+
