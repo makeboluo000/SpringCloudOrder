@@ -29,9 +29,10 @@ hystrix:
           thread:
             timeoutInMilliseconds: 1000
 management:
-  server:
-    servlet:
-      context-path: /
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 feign:
   hystrix:

@@ -19,14 +19,13 @@ public class HystrixController {
 //            @HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds", value = "3000")
 //    })
     // 熔断相关设置 可以放在配置文件里面
-//    @HystrixCommand(commandProperties = {
-//            @HystrixProperty(name="circuitBreaker.enabled", value = "true"), // 是否开启熔断器
-//            @HystrixProperty(name="circuitBreaker.requestVolumeThreshold", value = "10"), // 请求数达到多少才进行百分比计算
-//            @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds", value = "10000"), // 半开试探休眠时间，默认值5000ms
-//            @HystrixProperty(name="circuitBreaker.errorThresholdPercentage", value = "60") //  设定错误百分比，默认值50% 达到这个错误比就进入回调函数
-//    })
-
-    @HystrixCommand
+    @HystrixCommand(commandProperties = {
+            @HystrixProperty(name="circuitBreaker.enabled", value = "true"), // 是否开启熔断器
+            @HystrixProperty(name="circuitBreaker.requestVolumeThreshold", value = "10"), // 请求数达到多少才进行百分比计算
+            @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds", value = "10000"), // 半开试探休眠时间，默认值5000ms
+            @HystrixProperty(name="circuitBreaker.errorThresholdPercentage", value = "60") //  设定错误百分比，默认值50% 达到这个错误比就进入回调函数
+    })
+//    @HystrixCommand
     @GetMapping("/getProductInfoList")
     public String getProductInfoList(@RequestParam("num") Integer num) {
         if(num % 2 == 0) {
